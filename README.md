@@ -3,7 +3,9 @@
 #### The aim of this project is to monitor the chemical gases produced from beer during 15 days of fermentation process. 
  
 # [This is the website URL link](https://enose-degree-project-june-2023.netlify.app/)
-### ID: a@gmail.com Password: 123456
+### ID: a@gmail.com Password: 123456  
+### ⚠️(Please don't delete the data, thank you)
+
 
 
 
