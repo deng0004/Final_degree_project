@@ -22,6 +22,6 @@
 ## Explanation of this project
 The hardware was built by few of gas sensors which are MQ2, MQ3 and MQ136. Those gas sensors were attached on top of the orange funnel. The orange funnel was cover with a hard-ice-cream papar board. Few of the holes were drilled before the gas sensors were attached. 
 
-The 
+The code_for_hardware_to_database_connection.ino was burned into a ESP32 microcontroller. When user connected the microcontroller to a power source, the process would begin.
 
 The website is used for checking and observing the flow of data in any location. 
