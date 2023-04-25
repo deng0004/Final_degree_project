@@ -18,3 +18,6 @@
 
 ## This is a system design of the project.
 ![image](https://user-images.githubusercontent.com/118713625/230041159-1349cbe9-ed00-4021-bf23-3569c23ad912.png)
+
+
+The website is used for checking and observing the flow of data in any location. The hardware wa
