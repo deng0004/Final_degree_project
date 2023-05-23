@@ -20,7 +20,16 @@
 ![image](https://user-images.githubusercontent.com/118713625/230041159-1349cbe9-ed00-4021-bf23-3569c23ad912.png)
 
 ## Explanation of this project
-The hardware was built by few of gas sensors which are MQ2, MQ3 and MQ136. Those gas sensors were attached on top of the orange funnel. The orange funnel was cover with a hard-ice-cream papar board. Few of the holes were drilled before the gas sensors were attached. 
+The hardware was built by few of gas sensors which are MQ2, MQ3 and MQ136. Those gas sensors were attached on top of the orange funnel. The orange funnel was cover with a hard-ice-cream papar board. Few of the holes were drilled before the gas sensors were attached. After discussed with the supervisor, we have to make a box to place the hardware inside the box.
+
+![IMG_0515](https://github.com/deng0004/Final_degree_project/assets/118713625/40c47c14-a5e5-41d8-818e-bee63bde0924)
+
+
+![IMG_0517](https://github.com/deng0004/Final_degree_project/assets/118713625/f9d105a7-22a1-48a6-b335-c260daa25385)
+
+![IMG_0514](https://github.com/deng0004/Final_degree_project/assets/118713625/e36a8ff0-d996-41fe-83db-0668f76b9180)
+
+
 
 The code_for_hardware_to_database_connection.ino was burned into a ESP32 microcontroller. When user connected the microcontroller to a power source, the process would begin.
 
