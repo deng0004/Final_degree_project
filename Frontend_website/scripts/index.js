@@ -1,4 +1,81 @@
 
+console.log('API_KEY:', process.env.API_KEY);
+console.log('AUTH_DOMAIN:', process.env.AUTH_DOMAIN);
+console.log('DATABASE_URL:', process.env.DATABASE_URL);
+console.log('PROJECT_ID:', process.env.PROJECT_ID);
+console.log('STORAGE_BUCKET:', process.env.STORAGE_BUCKET);
+console.log('MESSAGING_SENDER_ID:', process.env.MESSAGING_SENDER_ID);
+console.log('APP_ID:', process.env.APP_ID);
+console.log('MEASUREMENT_ID:', process.env.MEASUREMENT_ID);
+
+const firebaseConfig = {
+  apiKey: process.env.API_KEY, 
+  authDomain: process.env.AUTH_DOMAIN,
+  databaseURL: process.env.DATABASE_URL,
+  projectId: process.env.PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.MESSAGING_SENDER_ID,
+  appId: process.env.APP_ID,
+  measurementId: process.env.MEASUREMENT_ID,
+};
+
+// Initialize firebase
+firebase.initializeApp(firebaseConfig);
+
+// Make auth and database references
+const auth = firebase.auth();
+const db = firebase.database();
+
+
+/*-----------------------------------------------------------------------------------authentication -------------------------------------------------------------------*/
+
+
+document.addEventListener("DOMContentLoaded", function(){
+    // listen for auth status changes
+    auth.onAuthStateChanged(user => {
+        if (user) {
+          console.log("user logged in");
+          console.log(user);
+          setupUI(user);
+          var uid = user.uid;
+          console.log(uid);
+        } else {
+          console.log("user logged out");
+          setupUI();
+        }
+    });
+
+    // login
+    const loginForm = document.querySelector('#login-form');
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // get user info
+        const email = loginForm['input-email'].value;
+        const password = loginForm['input-password'].value;
+        // log the user in
+        auth.signInWithEmailAndPassword(email, password).then((cred) => {
+            // close the login modal & reset form
+            loginForm.reset();
+            console.log(email);
+        })
+        .catch((error) =>{
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            document.getElementById("error-message").innerHTML = errorMessage;
+            console.log(errorMessage);
+        });
+    });
+
+    // logout
+    const logout = document.querySelector('#logout-link');
+    logout.addEventListener('click', (e) => {
+        e.preventDefault();
+        auth.signOut();
+    });
+});
+
+/*-----------------------------------------------------------------------------------table and chart -------------------------------------------------------------------*/
+
 // global stdNo
 var stdNo = 0;
 
@@ -12,7 +89,7 @@ function epochToDateTime(epochTime){
   var epochDate = new Date(epochToJsDate(epochTime));
   var dateTime = epochDate.getFullYear() + "/" +
     ("00" + (epochDate.getMonth() + 1)).slice(-2) + "/" +
-    ("00" + epochDate.getDate()).slice(-2) + " " +
+    ("00" + epochDate.getDate()).slice(-2) + "\n" +
     ("00" + epochDate.getHours()).slice(-2) + ":" +
     ("00" + epochDate.getMinutes()).slice(-2) + ":" +
     ("00" + epochDate.getSeconds()).slice(-2);
@@ -130,12 +207,6 @@ const setupUI = (user) => {
       dbRef.orderByKey().limitToLast(chartRange).on('child_added', snapshot => {
         var jsonData = snapshot.toJSON(); // example: {Alc: 25.02, humidity: 50.20, pressure: 1008.48, timestamp:1641317355}
         // Save values on variables
-        // console.log("type of jsonData", typeof (jsonData));
-        // var MQ2_Alc = jsonData.MQ2_Alc;
-        // var MQ2_CO = jsonData.MQ2_CO;
-        // var MQ2_H2 = jsonData.MQ2_H2;
-        // var MQ2_LPG = jsonData.MQ2_LPG;
-        // var MQ2_Prop = jsonData.MQ2_Prop; 
         var timestamp = jsonData.timestamp;
         // Plot the values on the charts
         plotValues(chartT, timestamp, jsonData);

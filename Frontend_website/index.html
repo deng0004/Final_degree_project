@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ESP Datalogging Firebase App</title>
+    <title>Monitoring Chemical Gases</title>
 
     <!-- include Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
@@ -13,26 +13,9 @@
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
 
-    <script>
-        // Replace with your app config object
-        const firebaseConfig = {
-            apiKey: "",
-            authDomain: "",
-            databaseURL: "",
-            projectId: "",
-            storageBucket: "",
-            messagingSenderId: "",
-            appId: "",
-            measurementId: "",
-        };
+    <!-- ... bundle.js is for the webpack.config.js  ... -->
+    <script type="module" src="dist/bundle.js"></script>
 
-        // Initialize firebase
-        firebase.initializeApp(firebaseConfig);
-
-        // Make auth and database references
-        const auth = firebase.auth();
-        const db = firebase.database();
-    </script>
 
     <!-- include highchartsjs to build the charts-->
     <script src="https://code.highcharts.com/highcharts.js"></script>
@@ -225,12 +208,7 @@
             <button id="hide-data-button" style="display: none">Hide data</button>
             <!--Delete data button-->
             <button id="delete-button" class="deletebtn">Delete data</button>
-            <!-- <Show current max No> -->
-            <!-- <div class="card">
-                <p><i class="fas fa-infinity" style="color:#059e8a;"></i> Current Number of Data Collected</p>
-                <p><span class="reading"><span id="num"></span> PPM</span>
-                </p>
-            </div> -->
+
         </p>
         <!--Modal to delete data-->
         <div id="delete-modal" class="modal" sytle="display:none">
@@ -264,21 +242,50 @@
           <table id="readings-table">
             <tr id="theader">
               <!-- <th>No</th> -->
-              <th>Timestamp</th>
-              <th>MQ2_Alcohol (PPM)</th>
-              <th>MQ2_CO (PPM)</th>
-              <th>MQ2_H2 (PPM)</th>
-              <th>MQ2_LPG (PPM)</th>
-              <th>MQ2_Propane (PPM)</th>
-              <th>MQ3_Alcohol (PPM)</th>
-              <th>MQ3_Benzene (PPM)</th>
-              <th>MQ3_CH4 (PPM)</th>
-              <th>MQ3_CO (PPM)</th>
-              <th>MQ3_Hexane (PPM)</th>
-              <th>MQ3_LPG (PPM)</th>
-              <th>MQ136_CO (PPM)</th>
-              <th>MQ136_H2S (PPM)</th>
-              <th>MQ136_NH4 (PPM)</th>
+              <th>Time
+                stamp</th>
+              <th>MQ2
+                Alcohol 
+                (PPM)</th>
+              <th>MQ2
+                CO 
+                (PPM)</th>
+              <th>MQ2
+                H2 
+                (PPM)</th>
+              <th>MQ2
+                LPG
+                (PPM)</th>
+              <th>MQ2
+            Propane
+                (PPM)</th>
+              <th>MQ3
+                Alcohol
+                (PPM)</th>
+              <th>MQ3
+                Benzene
+                (PPM)</th>
+              <th>MQ3
+                CH4 
+                (PPM)</th>
+              <th>MQ3
+                CO 
+                (PPM)</th>
+              <th>MQ3
+                Hexane 
+                (PPM)</th>
+              <th>MQ3
+                LPG
+                (PPM)</th>
+              <th>MQ136
+                CO
+                (PPM)</th>
+              <th>MQ136
+                H2S
+                (PPM)</th>
+              <th>MQ136
+                NH4
+                (PPM)</th>
             </tr>
             <tbody id="tbody"></tbody>
           </table>
@@ -288,12 +295,11 @@
             </button>
           </p>
         </div>
-      <!-- </div> -->
-    <!-- </div> -->
+
 
     <!--INCLUDE JS FILES-->
-    <script src="scripts/auth.js"></script>
+    <script type="module" src="scripts/index.js"></script>
     <script src="scripts/charts-definition.js"></script>
-    <script src="scripts/index.js"></script>
+   
   </body>
 </html>
